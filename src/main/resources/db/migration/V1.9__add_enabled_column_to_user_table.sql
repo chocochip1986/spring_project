@@ -1,0 +1,5 @@
+ALTER TABLE shop_owner."USER"
+ADD (
+    "ENABLED" NUMBER(1),
+    "EMAIL" VARCHAR(255)
+);

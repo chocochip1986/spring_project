@@ -1,0 +1,2 @@
+ALTER TABLE shop_owner."USER"
+    ADD "LOCKED" NUMBER(1);
