@@ -31,7 +31,11 @@ public class OppenheimerUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return this.user.getExpiryDate().isBefore(LocalDate.now());
+        if ( this.user.getExpiryDate() == null || this.user.getExpiryDate().isBefore(LocalDate.now()) ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

@@ -18,9 +18,13 @@ public class OppenheimerUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         User user = userDao.findByUsername(username);
 
+        org.springframework.security.core.userdetails.User.UserBuilder builder = null;
         if ( user == null ){
             throw new UsernameNotFoundException(username);
         }
-        return new OppenheimerUserDetails(user);
+        builder = org.springframework.security.core.userdetails.User.withUsername(user.getUsername());
+        builder.password(user.getPassword());
+        builder.roles(new String[]{"USER"});
+        return builder.build();
     }
 }
